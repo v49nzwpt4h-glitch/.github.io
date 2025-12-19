@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>“同课异构”联合教研 | 极简流光邀请函</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* * 极简雅白毛玻璃设计风格样式表
+         * 视觉关键词：Glassmorphism, Modular Agenda, Blue Glow
+         */
+        :root {
+            --primary-blue: #2563eb;    
+            --light-blue: #dbeafe;
+            --bg-white: #ffffff;
+            --text-main: #0f172a;       
+            --text-muted: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(37, 99, 235, 0.12);
+            --serif: 'Noto Serif SC', serif;
+            --sans: 'Noto Sans SC', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-white);
+            font-family: var(--sans);
+            color: var(--text-main);
+        }
+
+        /* 动态流光背景 */
+        .gradient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            width: 75vw;
+            height: 75vw;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 70%);
+            filter: blur(50px);
+            border-radius: 50%;
+            animation: move 20s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { top: -10%; left: -10%; }
+        .blob-2 { bottom: 0%; right: -20%; background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0) 70%); animation-delay: -7s; }
+        .blob-3 { top: 35%; left: 15%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0) 70%); animation-delay: -14s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1) rotate(0deg); }
+            to { transform: translate(10%, 15%) scale(1.1) rotate(15deg); }
+        }
+
+        /* 容器 */
+        .slider-wrapper {
+            width: 100%; height: 100%;
+            transition: transform 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .section {
+            width: 100%; height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            padding: 0 30px; position: relative;
+        }
+
+        /* 毛玻璃卡片 */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px 25px;
+            width: 100%;
+            box-shadow: 0 15px 35px -10px rgba(37, 99, 235, 0.06);
+            display: flex; flex-direction: column;
+        }
+
+        /* 动画设定 */
+        .ani { opacity: 0; transform: translateY(20px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .active .ani { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+
+        /* 标题样式 */
+        .hero-title {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            line-height: 1.3;
+            text-align: center;
+            color: var(--primary-blue);
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        /* 献课教师卡片 */
+        .teacher-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-left: 3px solid var(--primary-blue);
+            border-radius: 12px 20px 20px 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .avatar-minimal {
+            width: 44px; height: 44px;
+            background: #fff;
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-right: 18px;
+            flex-shrink: 0;
+            border: 1px solid var(--light-blue);
+        }
+
+        .teacher-info h4 { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--text-main); }
+        .teacher-info p { margin: 2px 0 0 0; font-size: 0.75rem; color: var(--text-muted); }
+        .lesson-label {
+            font-size: 0.7rem; color: var(--primary-blue); font-weight: 700;
+            background: var(--light-blue); padding: 2px 8px; border-radius: 4px;
+            margin-top: 6px; display: inline-block;
+        }
+
+        /* 模块化日程样式 */
+        .agenda-module {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 12px;
+            width: 100%;
+            border: 1px solid rgba(37, 99, 235, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .agenda-time-tag {
+            background: var(--primary-blue);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            min-width: 95px;
+            text-align: center;
+        }
+
+        .agenda-content {
+            text-align: left;
+            flex: 1;
+        }
+
+        .agenda-content span {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .agenda-content small {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .btn-action {
+            display: block; width: 100%; max-width: 250px; padding: 16px;
+            background: var(--primary-blue); color: #fff; text-align: center;
+            text-decoration: none; border-radius: 50px; font-weight: 700;
+            margin: 20px auto 0; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .swipe-hint {
+            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+            z-index: 100; text-align: center; color: var(--text-muted);
+            font-size: 0.7rem; letter-spacing: 3px; animation: bounce 2.5s infinite; opacity: 0.5;
+        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform:translate(-50%, 0);} 40% {transform:translate(-50%, -8px);} }
+
+    </style>
+</head>
+<body>
+
+    <div class="gradient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="swipe-hint">
+        向上滑动<br>
+        <span style="font-size: 1rem;">⌵</span>
+    </div>
+
+    <div class="slider-wrapper" id="slider">
+        
+        <!-- Page 1: 封面 -->
+        <section class="section active" style="text-align: center;">
+            <div class="ani hero-tag" style="font-size: 0.75rem; letter-spacing: 5px; color: var(--text-muted); margin-bottom: 20px;">2025 JOINT RESEARCH</div>
+            <h1 class="ani hero-title delay-1">聚焦核心素养<br>构建高效课堂</h1>
+            <p class="ani delay-2" style="margin-top: 20px; color: var(--text-muted); letter-spacing: 2px; font-size: 0.95rem;">
+                成都七中 × 菁才中学校 <br> 联合教研研讨会
+            </p>
+            <div class="ani delay-3" style="margin-top: 45px; color: var(--primary-blue); font-weight: 800; font-size: 1.2rem; border-top: 1px solid var(--light-blue); padding-top: 20px; width: 60%; margin-left: auto; margin-right: auto; text-align: center;">
+                2025 . 12 . 25
+            </div>
+        </section>
+
+        <!-- Page 2: 研讨主旨 -->
+        <section class="section">
+            <div class="ani glass-card">
+                <h3 style="font-family: var(--serif); color: var(--primary-blue); font-size: 1.5rem; margin: 0 0 25px 0; text-align: center;">研讨主旨</h3>
+                <div style="text-align: left; line-height: 2; font-size: 1rem; color: var(--text-main);">
+                    <p style="margin: 0; text-indent: 2em;">同一篇课文，不同的课堂视角。</p>
+                    <p style="margin-top: 15px; text-indent: 2em;">本次“同课异构”研讨会聚焦经典篇目《大雁归来》，旨在通过三位教师的深度演绎，开启一场关于“高效”与“美感”的教研对话，共同探索核心素养落地生根的多元路径。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 3: 献课教师 -->
+        <section class="section">
+            <div class="ani" style="width: 100%;">
+                <h3 style="font-family: var(--serif); margin-bottom: 30px; font-size: 1.6rem; text-align: center;">献课教师</h3>
+                
+                <div class="teacher-card ani delay-1">
+                    <div class="avatar-minimal">唐</div>
+                    <div class="teacher-info">
+                        <h4>唐澜心</h4>
+                        <p>七中菁才(永宁) · 七年级1班</p>
+                        <span class="lesson-label">📖 《大雁归来》</span>
+                    </div>
+                </div>
+
+                <div class="teacher-card ani delay-2">
+                    <div class="avatar-minimal">陈</div>
+                    <div class="teacher-info">
+                        <h4>陈媛</h4>
+                        <p>七中菁才(涌泉) · 七年级2班</p>
+                        <span class="lesson-label">📖 《大雁归来》</span>
+                    </div>
+                </div>
+
+                <div class="teacher-card ani delay-3">
+                    <div class="avatar-minimal">李</div>
+                    <div class="teacher-info">
+                        <h4>李欣</h4>
+                        <p>成都七中 · 七年级3班</p>
+                        <span class="lesson-label">📖 《大雁归来》</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 4: 日程安排 -->
+        <section class="section">
+            <div class="ani glass-card" style="text-align: center;">
+                <h3 style="font-family: var(--serif); margin: 0 0 30px 0; color: var(--primary-blue); font-size: 1.5rem;">日程安排</h3>
+                
+                <div class="agenda-module ani delay-1">
+                    <div class="agenda-time-tag">07:30 - 07:50</div>
+                    <div class="agenda-content">
+                        <span>签到入场</span>
+                        <small>资料领取</small>
+                    </div>
+                </div>
+
+                <div class="agenda-module ani delay-2">
+                    <div class="agenda-time-tag">08:00 - 10:30</div>
+                    <div class="agenda-content">
+                        <span>“同课异构”课堂展示</span>
+                        <small>三节连上，深度对话核心素养</small>
+                    </div>
+                </div>
+
+                <div class="agenda-module ani delay-3">
+                    <div class="agenda-time-tag">10:35 - 11:20</div>
+                    <div class="agenda-content">
+                        <span>深度说课与专家讲座</span>
+                        <small>主讲：成都七中 王亚丽</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 5: 导航指南 -->
+        <section class="section">
+            <div class="ani glass-card" style="text-align: center;">
+                <h3 style="font-family: var(--serif); margin: 0 0 30px 0; color: var(--primary-blue); font-size: 1.5rem;">地点导航</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <span style="font-size: 0.8rem; color: var(--primary-blue); font-weight: 700; display: block; margin-bottom: 5px;">目的地</span>
+                    <p style="margin: 0; font-size: 1.05rem; font-weight: 500;">成都市七中菁才中学校<br>（涌泉校区）</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <span style="font-size: 0.8rem; color: var(--primary-blue); font-weight: 700; display: block; margin-bottom: 5px;">详细地址</span>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-main);">温江区凤栖湖北路166号</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <span style="font-size: 0.75rem; color: var(--primary-blue); font-weight: 700; display: block; margin-bottom: 5px;">停车提示</span>
+                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">车辆可统一停放至学校地下停车场</p>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <span style="font-size: 0.75rem; color: var(--primary-blue); font-weight: 700; display: block; margin-bottom: 5px;">联系人</span>
+                    <p style="margin: 0; font-size: 1rem; font-weight: 500;">陈媛老师 <br> <a href="tel:18848493637" style="color: var(--primary-blue); text-decoration: none; font-weight: 900;">188 4849 3637</a></p>
+                </div>
+
+                <a href="https://uri.amap.com/marker?position=103.847119,30.681125&name=成都市七中菁才中学校(涌泉校区)" target="_blank" class="btn-action">一键地图导航</a>
+            </div>
+        </section>
+
+        <!-- Page 6: 总结与欢迎 -->
+        <section class="section">
+            <div class="ani" style="width: 100%; text-align: center;">
+                <div class="ani" style="font-family: var(--serif); font-size: 1.3rem; color: var(--primary-blue); margin-bottom: 25px;">教以共进，研以致远</div>
+                <div class="ani delay-1 glass-card" style="padding: 40px 25px;">
+                    <p style="line-height: 2.2; font-size: 1.05rem; color: var(--text-main); margin: 0;">
+                        独行快，众行远。<br>
+                        在“同课异构”的智慧碰撞中，<br>
+                        我们将共同开启高效课堂的新篇章。
+                    </p>
+                    <div style="margin: 30px auto 20px; width: 40px; height: 2px; background: var(--primary-blue);"></div>
+                    <h2 style="font-family: var(--serif); font-size: 1.7rem; color: var(--primary-blue); margin: 0;">诚挚欢迎您的莅临</h2>
+                </div>
+                <p class="ani delay-3" style="margin-top: 35px; font-size: 0.75rem; color: var(--text-muted); opacity: 0.6; letter-spacing: 2px;">
+                    温江区菁才中学校 · 成都七中
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const sections = document.querySelectorAll('.section');
+        let currentIndex = 0;
+        let startY = 0;
+        let isMoving = false;
+
+        function goToPage(index) {
+            if (index < 0 || index >= sections.length || isMoving) return;
+            isMoving = true;
+            currentIndex = index;
+            slider.style.transform = `translateY(-${currentIndex * 100}vh)`;
+            
+            setTimeout(() => {
+                sections.forEach((s, i) => {
+                    if (i === currentIndex) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+                isMoving = false;
+                document.querySelector('.swipe-hint').style.display = (currentIndex === sections.length - 1) ? 'none' : 'block';
+            }, 800);
+        }
+
+        window.addEventListener('touchstart', e => startY = e.touches[0].clientY);
+        window.addEventListener('touchend', e => {
+            let endY = e.changedTouches[0].clientY;
+            let diff = startY - endY;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) goToPage(currentIndex + 1);
+                else goToPage(currentIndex - 1);
+            }
+        });
+
+        window.addEventListener('wheel', e => {
+            if (e.deltaY > 0) goToPage(currentIndex + 1);
+            else goToPage(currentIndex - 1);
+        }, { passive: true });
+
+    </script>
+</body>
+</html>
